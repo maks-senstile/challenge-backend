@@ -1,5 +1,12 @@
-package com.example;
+package com.example.services;
 
+import com.example.services.processors.Provider1Processor;
+import com.example.services.processors.Provider2Processor;
+import com.example.services.processors.Provider3Processor;
+import com.example.exceptions.ProviderDeliveryException;
+import com.example.model.Address;
+import com.example.model.DeliveryOrder;
+import com.example.model.DeliveryOrderScheduled;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

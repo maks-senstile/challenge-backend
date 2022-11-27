@@ -1,7 +1,7 @@
-package com.example;
+package com.example.rest;
 
-import com.example.User;
-import com.example.UserRepository;
+import com.example.model.User;
+import com.example.repositories.UserRepository;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;

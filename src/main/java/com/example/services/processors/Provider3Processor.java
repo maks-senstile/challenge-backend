@@ -1,12 +1,13 @@
-package com.example;
+package com.example.services.processors;
 
+import com.example.model.Address;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.UUID;
 
 @Component
-public class Provider2Processor {
+public class Provider3Processor {
 
     public String process(Address address, List<Long> productIds) {
         // Here is the logic to send an order to a specific provider for delivering

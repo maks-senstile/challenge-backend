@@ -1,5 +1,13 @@
-package com.example;
+package com.example.services;
 
+import com.example.exceptions.ProviderDeliveryException;
+import com.example.model.Address;
+import com.example.model.DeliveryOrder;
+import com.example.model.DeliveryOrderScheduled;
+import com.example.model.enums.OrderStatus;
+import com.example.repositories.AddressRepository;
+import com.example.repositories.DeliveryOrderRepository;
+import com.example.repositories.DeliveryOrderScheduledRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;

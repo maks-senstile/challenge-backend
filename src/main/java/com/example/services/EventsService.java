@@ -1,5 +1,7 @@
-package com.example;
+package com.example.services;
 
+import com.example.model.DeliveryOrder;
+import com.example.model.DeliveryOrderScheduled;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 

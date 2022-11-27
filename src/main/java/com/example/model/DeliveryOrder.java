@@ -1,4 +1,6 @@
-package com.example;
+package com.example.model;
+
+import com.example.model.enums.OrderStatus;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;

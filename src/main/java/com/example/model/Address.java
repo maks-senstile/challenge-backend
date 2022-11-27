@@ -1,5 +1,6 @@
-package com.example;
+package com.example.model;
 
+import com.example.model.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.Entity;

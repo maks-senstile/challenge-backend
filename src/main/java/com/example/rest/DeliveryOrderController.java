@@ -1,5 +1,12 @@
-package com.example;
+package com.example.rest;
 
+import com.example.model.DeliveryOrder;
+import com.example.model.DeliveryOrderScheduled;
+import com.example.model.enums.OrderStatus;
+import com.example.repositories.AddressRepository;
+import com.example.repositories.DeliveryOrderRepository;
+import com.example.repositories.DeliveryOrderScheduledRepository;
+import com.example.services.DeliveryOrderService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;

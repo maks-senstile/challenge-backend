@@ -1,5 +1,6 @@
-package com.example;
+package com.example.services.processors;
 
+import com.example.model.Address;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

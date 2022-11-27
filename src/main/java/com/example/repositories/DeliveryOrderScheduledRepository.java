@@ -1,5 +1,6 @@
-package com.example;
+package com.example.repositories;
 
+import com.example.model.DeliveryOrderScheduled;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.Instant;
