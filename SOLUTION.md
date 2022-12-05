@@ -1,27 +1,50 @@
-Project was split into several modules
+## Structure
+Project consists of several modules
 
-users-service - user management
-delivery-service - the main business login
-delivery-adapter-x - adapter for partner system (under development)
-delivery-adapter-y - adapter for partner system (under development)
-delivery-adapter-z - adapter for partner system (under development)
+* users-service - user management
+* delivery-service - the main business login
+... modules under development
+* delivery-adapter-x - adapter for partner system (under development)
+* delivery-adapter-y - adapter for partner system (under development)
+* delivery-adapter-z - adapter for partner system (under development)
 
-## Запуск
-(docker does not implemented)
-
+## How to start
+Java 11 is required
+### Pure java
 maven clean package
 
 java -jar users-service\target\users-service-1.0-jar-with-dependencies.jar
-`http://127.0.0.1:8080/find-user-by-id/1`
+`http://127.0.0.1:8081/find-user-by-id/1`
 
-## Описание
-Synchronous and Asynchronous call use the same buiseness login and event.
-The only different is the [channel](https://www.enterpriseintegrationpatterns.com/MessageChannel.html) implementation.
-The first one is blocking channel and the second one is using message queue under the hood.
-Both channel deliver events to the appropriate processors.
+java -jar delivery-service\target\delivery-service-1.0-jar-with-dependencies.jar
+### With docker
+change `user-service-url` property in `delivery-service/resource/application.yaml` to "http://users-service:8081" 
+maven clean package
+docker compose up
 
-Для каждого партнера мы будем создавать свой адаптер, потому что технологии и протоколы работы с ними часто очень разные.
-Ну и меняются они независимо. (У сервиса должна быть одна причина для изменения).
+## Using
+##### Get user
+`http://127.0.0.1:8081/find-user-by-id/1`
+##### Get all users
+`http://localhost:8081/find-all-users`
+##### Create order
+```bash
+curl --request POST \
+  --url 'http://127.0.0.1:8080/delivery/create-new-delivery-order?execute_at=ASAP' \
+  --header 'Content-Type: application/json' \
+  --data '{
+	"user_id": 1,
+	"address_id": 1,
+	"product_ids": [50, 42]
+}'
+```
+#### Find orders
+`http://127.0.0.1:8080/delivery/find-all-delivery-orders`
+
+
+## Description
+There is a classic java application. I am using Kotlin as main language and [ktor](https://ktor.io/) as web framework.
+Database layer implemented with [jooq](https://www.jooq.org/).
 
 There are several solutions for writing into DB and send message 100% reliable:
 * Using outbox pattern with Debezium. You can read more in the book with a pig.

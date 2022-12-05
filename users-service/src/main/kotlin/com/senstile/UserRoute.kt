@@ -19,7 +19,7 @@ fun Route.user() {
     }
 
     get("/find-all-users") {
-        // Добавим простой paging, иначе скопытимся от первого же запроса
+        // There are simple paging here
         val limit = call.request.queryParameters["limit"].let { it?.toIntOrNull() ?: 10 }
         val offset = call.request.queryParameters["offset"].let { it?.toIntOrNull() ?: 0 }
 

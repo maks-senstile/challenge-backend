@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  users-service:
+    build: users-service/
+    ports:
+      - 8081:8081
+
+  delivery-service:
+    build: delivery-service/
+    ports:
+      - 8080:8080
+    depends_on:
+      - users-service

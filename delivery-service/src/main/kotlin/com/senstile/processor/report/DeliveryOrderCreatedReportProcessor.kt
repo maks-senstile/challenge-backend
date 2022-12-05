@@ -7,7 +7,7 @@ import com.senstile.repository.DeliveryOrderReportRepository
 import org.springframework.stereotype.Component
 
 /**
- * Записываем заявку в репорт таблицу.
+ * Save an order and send an event.
  */
 @Component
 class DeliveryOrderCreatedReportProcessor(
@@ -17,7 +17,7 @@ class DeliveryOrderCreatedReportProcessor(
     override fun isApplicable(routingKey: String) = routingKey == RoutingKeys.DELIVERY_ORDER_CREATED
 
     override suspend fun process(event: DeliveryOrderCreatedEvent) {
-        // Просто записываем заявку
+        // Writing an order
         reportRepository.save(
             orderId = event.orderId,
             userId = event.user.id,

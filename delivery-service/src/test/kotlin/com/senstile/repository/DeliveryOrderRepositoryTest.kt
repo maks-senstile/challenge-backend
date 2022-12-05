@@ -54,8 +54,17 @@ class DeliveryOrderRepositoryTest {
 
     @Test
     fun testSave(): Unit = runBlocking {
-        val entity = repository.save(1, 1, null, listOf(1, 2, 3))
+        val entity = repository.save(
+            addressId = 1,
+            userId = 1,
+            executeAt = null,
+            productIds = listOf(1, 2, 3)
+        )
 
         assertEquals(1, entity.addressId)
+        assertEquals(1, entity.userId)
+        // Other checks will be here
     }
+
+    // Other repository tests
 }
