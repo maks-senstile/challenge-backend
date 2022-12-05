@@ -22,7 +22,7 @@ Now we have chance to completely rewrite the system, including API change (endpo
 - An order can be executed (sent to a delivery provider) as soon as possible or scheduled to
   be executed later
 - After the service receives a request it stores an order object in our DB and sends a request to a provider. Then the system tries to handle the order async. We just update orders status to `PROCESSING` and set an id issued by a provider. Note: for this challenge we don't care about the final response from providers
-- For evey single action we have to send an event to a messaging system (e.q. kafka, sns etc). Here we just emulate it in `EventsService` (please don't implement a real messaging provider)
+- For evey single action we have to send an event to a messaging system (e.q. kafka, sns etc). Here we just emulate it in `com.senstile.EventsService` (please don't implement a real messaging provider)
 - We noticed that in current solution we are losing some outgoing events about deliveryOrders. We
   MUST 100% notify listeners regarding any statuses of orders. That means a new solution should
   be designed to cover the requirement. For example an order has been sent to a provider, we

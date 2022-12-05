@@ -1,0 +1,26 @@
+delivery:
+  user-service-url: "http://127.0.0.1:8081"
+
+ktor:
+  deployment:
+    port: 8080
+  application:
+    modules:
+      - com.senstile.KtorApplicationKt.module
+
+spring:
+  application:
+    name: claim-dispatcher
+  jackson:
+    property-naming-strategy: "SNAKE_CASE"
+    deserialization:
+      FAIL_ON_UNKNOWN_PROPERTIES: false
+      ADJUST_DATES_TO_CONTEXT_TIME_ZONE: false
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+  jooq:
+    sql-dialect: postgres
+  datasource:
+    jdbc-url: "jdbc:h2:mem:delivery"
+    username: "sa"
+    password:
