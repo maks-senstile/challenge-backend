@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.2"
+                 xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_2.xsd">
+
+    <entity class="org.example.domain.model.addresses.Address" name="Address">
+        <table name="addresses" />
+        <attributes>
+            <id name="id">
+                <column name="id" />
+            </id>
+            <basic name="userId">
+                <column name="user_id" />
+            </basic>
+            <basic name="addressLine">
+                <column name="address_line" />
+            </basic>
+            <basic name="city">
+                <column name="city" />
+            </basic>
+            <basic name="country">
+                <column name="country" />
+            </basic>
+            <basic name="postalCode">
+                <column name="postal_code" />
+            </basic>
+        </attributes>
+    </entity>
+</entity-mappings>
