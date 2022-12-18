@@ -1,0 +1,21 @@
+server:
+  port: 7070
+  jpa:
+    hibernate:
+      ddl-auto: create
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+
+service:
+  eventBus:
+    executorCorePoolSize: 2
+    executorMaxPoolSize: 4
+    executorWaitForTasksToCompleteOnShutdown: true
+    executorAwaitTerminationSeconds: 30

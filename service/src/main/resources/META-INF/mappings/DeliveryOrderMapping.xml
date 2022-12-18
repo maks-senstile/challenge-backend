@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.2"
+                 xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_2.xsd">
+
+    <entity class="org.example.domain.model.orders.DeliveryOrder" name="DeliveryOrder">
+        <table name="orders" />
+        <attributes>
+            <id name="id">
+                <column name="id" />
+            </id>
+            <basic name="userId">
+                <column name="user_id" />
+            </basic>
+            <basic name="productIds">
+                <column name="product_ids" />
+                <convert converter="org.example.service.integrations.jpa.converters.ProductIdsListConverter"/>
+            </basic>
+            <basic name="createdAt">
+                <column name="created_at" />
+            </basic>
+            <basic name="stateMachine">
+                <column name="status" />
+                <convert converter="org.example.service.integrations.jpa.converters.OrderStatusStateMachineConverter"/>
+            </basic>
+            <basic name="processor">
+                <column name="processor" />
+            </basic>
+            <basic name="providerOrderId">
+                <column name="provider_order_id" />
+            </basic>
+            <one-to-one name="address">
+                <join-column name="address_id" />
+            </one-to-one>
+            <embedded name="schedule" />
+        </attributes>
+    </entity>
+
+    <embeddable class="org.example.domain.model.orders.embedded.Schedule">
+        <attributes>
+            <basic name="urgency">
+                <column name="urgency" />
+                <enumerated>STRING</enumerated>
+            </basic>
+            <basic name="executeAt">
+                <column name="execute_at" />
+            </basic>
+        </attributes>
+    </embeddable>
+
+    <converter
+            class="org.example.service.integrations.jpa.converters.OrderStatusStateMachineConverter"
+            auto-apply="true" />
+
+    <converter
+            class="org.example.service.integrations.jpa.converters.ProductIdsListConverter"
+            auto-apply="true" />
+</entity-mappings>
